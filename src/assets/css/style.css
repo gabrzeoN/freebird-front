@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400&display=swap');
+
+* {
+    box-sizing: border-box;
+    transition: all ease .2s;
+    --main-background: #ffffff;
+    --main-button: #A762D7;
+    --main-font: white;
+
+    --header-background: rgb(222, 222, 222);
+    --transaction-background: white;
+}
+
+body {
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 300;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
