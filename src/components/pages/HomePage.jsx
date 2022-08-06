@@ -7,7 +7,14 @@ import AuthBox from '../AuthBox';
 import Header from '../Header';
 import BasicTabs from '../AuthTabs';
 
+import { useState, useContext } from 'react';
+// import axios from 'axios';
+import { UserContext } from '../../contexts/UserContext';
+
 export default function Home() {
+const {user} = useContext(UserContext);
+
+    console.log(user)
     return (
         <>
             <Header></Header>        
