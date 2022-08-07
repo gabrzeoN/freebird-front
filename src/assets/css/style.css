@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 * {
     box-sizing: border-box;
@@ -7,6 +8,8 @@
     --main-button: #A762D7;
     --main-font: white;
 
+    --logo-font: 'Pacifico', cursive;
+    --main-font: 'Lexend Deca', sans-serif;
     --header-background: rgb(222, 222, 222);
     --transaction-background: white;
 }

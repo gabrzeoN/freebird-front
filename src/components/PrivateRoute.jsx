@@ -5,7 +5,7 @@ import { UserContext } from "../contexts/UserContext";
 export default function PrivateRoute({ children }){
     const {user} = useContext(UserContext);
     if(!user){
-        alert("You are not signed in. Redirecting to sign in page!");
+        alert("You are not signed in. Redirecting to home page!");
         return <Navigate to="/" />
     }
     return children;

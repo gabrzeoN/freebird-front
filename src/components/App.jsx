@@ -5,7 +5,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import "../assets/css/style.css";
 import UserContext from "../contexts/UserContext";
 import { UserProvider } from "../contexts/UserContext";
-import Home from "./pages/HomePage";
+import HomePage from "./pages/HomePage";
+import NewLocationPage from "./pages/NewLocationPage"
+import PrivateRoute from "./PrivateRoute";
 
 export default function App() {
 
@@ -13,12 +15,12 @@ export default function App() {
         <UserProvider>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    {/* <Route path="/" element={<SignInPage/>} />
-                        <Route path="/sign-up" element={<SignUp/>} />
-                        <Route path="/timeline" element={<Timeline/>} />
-                        <Route path='/hashtag/:hashtag' element={<TagPage />} />
-                    <Route path="/user/:userId" element={<UserPage/>} /> */}
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/new-location" element={<PrivateRoute><NewLocationPage/></PrivateRoute>} />
+                    {/* <Route path="/" element={<SignInPage/>} /> */}
+                    {/* <Route path="/sign-up" element={<SignUp/>} /> */}
+                    {/* <Route path='/hashtag/:hashtag' element={<TagPage />} /> */}
+                    {/* <Route path="/user/:userId" element={<UserPage/>} /> */}
                 </Routes>
             </BrowserRouter>
         </UserProvider>

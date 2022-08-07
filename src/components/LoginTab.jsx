@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import CountrySelect from "./CountrySelect";
+import * as userApi from "../services/auth.js"
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { useState, useContext } from 'react';
@@ -9,21 +9,23 @@ import axios from 'axios';
 import { UserContext } from '../contexts/UserContext';
 export default function LoginTab() {
     const [disabled, setDisabled] = useState(false);
+    const {setUser} = useContext(UserContext);
     // const [signInData, setSignInData] = useState({
     //     email: "",
     //     password: "",
-    // });
-    const {setUser} = useContext(UserContext);
+    // }); 
+    // TODO: change me
     const [signInData, setSignInData] = useState({
-        email: "a@ab.com",
-        password: "1122334455",
+        email: "admin@gmail.com",
+        password: "adminadmin",
     });
 
     async function handleSubmit(e) {
         e.preventDefault();
         setDisabled(true);
         try {
-            const { data } = await axios.post("http://localhost:5000/sign-in", signInData);
+            const { data } = await userApi.signIn(signInData);
+            // const { data } = await axios.post("http://localhost:5000/sign-in", signInData);
             localStorage.setItem("freebirdwebsite_user", JSON.stringify(data));
             setUser(data);
             console.log(data)

@@ -5,12 +5,14 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import RestoreIcon from '@mui/icons-material/Restore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import HomeIcon from '@mui/icons-material/Home';
 
 export default function Navigation() {
     const [value, setValue] = React.useState(0);
 
     return (
-        <Box sx={{ width: 500 }}>
+        <Box sx={{ width: "30vw" }}>
             <BottomNavigation
                 showLabels
                 value={value}
@@ -18,9 +20,10 @@ export default function Navigation() {
                     setValue(newValue);
                 }}
             >
-                <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
+                <BottomNavigationAction label="Home" icon={<HomeIcon />} />
                 <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-                <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+                <BottomNavigationAction label="My locations" icon={<LocationOnIcon />} />
+                <BottomNavigationAction label="Nearby" icon={<AccountBoxIcon />} />
             </BottomNavigation>
         </Box>
     );

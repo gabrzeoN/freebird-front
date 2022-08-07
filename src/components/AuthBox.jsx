@@ -8,7 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import AuthTabs from "./AuthTabs";
 import FlutterDashIcon from '@mui/icons-material/FlutterDash';
-
+import LoginIcon from '@mui/icons-material/Login';
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -27,7 +27,7 @@ export default function AuthBox() {
     return (
         <div>
             <Button variant="outlined" onClick={handleClickOpen}>
-                Login / Register
+                <LoginIcon>Login / Register</LoginIcon>
             </Button>
             <Dialog
                 open={open}

@@ -11,7 +11,7 @@ import { useState, useContext } from 'react';
 // import axios from 'axios';
 import { UserContext } from '../../contexts/UserContext';
 
-export default function Home() {
+export default function HomePage() {
 const {user} = useContext(UserContext);
 
     console.log(user)
