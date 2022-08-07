@@ -19,17 +19,18 @@ export default function Header() {
 }
 
 const HeaderContent = styled.header`
-    background-color: var(--header-background);
+    /* background-color: var(--header-background); */
+    box-shadow: -1px 11px 21px -1px rgba(0,0,0,0.75);
+    /* -webkit-box-shadow: -1px 11px 21px -1px rgba(0,0,0,0.75); */
+    /* -moz-box-shadow: -1px 11px 21px -1px rgba(0,0,0,0.75); */
     height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-
-    @media(max-width: 600px) {
-        .navbostao{
-            display: none;
-        }
-    }
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
 `;
 
 const Logo = styled.div`
@@ -38,11 +39,11 @@ const Logo = styled.div`
     justify-content: space-evenly;
     font-family: var(--logo-font);
     font-size: 50px;
-    color: #0c8d98
+    color: #0c8d98;
 `;
 
 const PageNavigation = styled.div`
-    @media(max-width: 600px) {
+    @media(max-width: 1200px) {
         display: none;
     }
 `;

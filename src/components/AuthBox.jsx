@@ -36,7 +36,7 @@ export default function AuthBox() {
                 onClose={handleClose}
                 aria-describedby="alert-dialog-slide-description"
             >
-                <DialogContent>
+                <DialogContent sx={{padding: "0px"}}>
                     <DialogContentText id="alert-dialog-slide-description">
                         <AuthTabs></AuthTabs>
                     </DialogContentText>

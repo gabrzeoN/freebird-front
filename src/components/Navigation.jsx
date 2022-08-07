@@ -7,12 +7,13 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import HomeIcon from '@mui/icons-material/Home';
-
+import styled from 'styled-components';
+import { useContext } from 'react';
+import { PageNavigationContext } from '../contexts/PageNavigationContext';
 export default function Navigation() {
-    const [value, setValue] = React.useState(0);
-
+    const {page: value, setPage: setValue} = useContext(PageNavigationContext);
     return (
-        <Box sx={{ width: "30vw" }}>
+        <BoxStyled sx={{ width: "100%", fontSize: "100px" }}>
             <BottomNavigation
                 showLabels
                 value={value}
@@ -23,8 +24,18 @@ export default function Navigation() {
                 <BottomNavigationAction label="Home" icon={<HomeIcon />} />
                 <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
                 <BottomNavigationAction label="My locations" icon={<LocationOnIcon />} />
-                <BottomNavigationAction label="Nearby" icon={<AccountBoxIcon />} />
+                {/* <BottomNavigationAction label="Nearby" icon={<AccountBoxIcon />} /> */}
             </BottomNavigation>
-        </Box>
+        </BoxStyled>
     );
 }
+
+const BoxStyled = styled(Box)`
+    &&{
+        color: red;
+        @media (min-width: 1200px) {
+            width: 650px;
+            margin-right: 200px;
+        }
+    }
+`;

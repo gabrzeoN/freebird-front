@@ -6,7 +6,8 @@ import NativeSelect from '@mui/material/NativeSelect';
 import AuthBox from '../AuthBox';
 import Header from '../Header';
 import BasicTabs from '../AuthTabs';
-
+import styled from "styled-components";
+import Footer from '../Footer';
 import { useState, useContext } from 'react';
 // import axios from 'axios';
 import { UserContext } from '../../contexts/UserContext';
@@ -16,8 +17,13 @@ const {user} = useContext(UserContext);
 
     console.log(user)
     return (
-        <>
-            <Header></Header>        
-        </>
+        <HomePageContent>
+            <Header></Header>  
+            <Footer></Footer>   
+        </HomePageContent>
     );
 }
+
+const HomePageContent = styled.div`
+
+`;
