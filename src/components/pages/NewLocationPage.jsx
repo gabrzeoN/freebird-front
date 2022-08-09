@@ -1,45 +1,52 @@
 import axios from 'axios';
 import * as React from 'react';
 import styled from "styled-components";
-import { useState, useContext, useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
+
 import CountrySelect from "../CountrySelect";
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 
 import { UserContext } from '../../contexts/UserContext';
+import * as locationApi from "../../services/locations.js"
 import Header from '../Header';
+import Footer from '../Footer';
 
 export default function NewLocationPage() {
     const { user } = useContext(UserContext);
     const navigate = useNavigate();
 
     const [disabled, setDisabled] = useState(false);
-    // const [signUpData, setSignUpData] = useState({
+    // const [newLocationData, setNewLocationData] = useState({
+    //     pricePerNight: 0,
+    //     bedrooms: 0,
+    //     description: "",
     //     country: "",
-    //     fullName: "",
-    //     email: "",
-    //     foneNumber: "",
-    //     password: "",
-    //     repeatPassword: "",
+    //     state: "",
+    //     city: "",
+    //     isAvailable: true
     // });
+
     // TODO: change me
-    const [signUpData, setSignUpData] = useState({
-        country: "",
-        fullName: "aa",
-        email: "a@ab.com",
-        foneNumber: "11223344556",
-        password: "1122334455",
-        repeatPassword: "1122334455",
+    const [newLocationData, setNewLocationData] = useState({
+        pricePerNight: 50000,
+        bedrooms: 5,
+        description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo at quia aliquam quos, libero mollitia sunt reprehenderit porro, nostrum possimus eum, tempora vel optio inventore! Voluptatum rerum minus blanditiis in.",
+        country: "Brazil",
+        state: "Parana",
+        city: "Maringa",
+        isAvailable: true
     });
     async function handleSubmit(e) {
         e.preventDefault();
         setDisabled(true);
         try {
-            await axios.post("http://localhost:5000/sign-up", signUpData);
+            const { data } = await locationApi.newLocation();
             window.location.reload();
         } catch (error) {
             console.log(error.response.data);
@@ -64,56 +71,51 @@ export default function NewLocationPage() {
                     <CountrySelect
                         id="country-select"
                         disabled={disabled}
-                        signUpData={signUpData}
-                        setSignUpData={setSignUpData}
+                        data={newLocationData}
+                        setData={setNewLocationData}
                     />
+
+
                     <TextField
                         id="outlined-search"
-                        label="Full name"
+                        label="State"
                         type="text"
                         disabled={disabled}
-                        value={signUpData.fullName}
-                        onChange={e => setSignUpData({ ...signUpData, fullName: e.target.value })}
+                        value={newLocationData.state}
+                        onChange={e => setNewLocationData({ ...newLocationData, state: e.target.value })}
                         required
                     />
                     <TextField
                         id="outlined-search"
-                        label="Email"
-                        type="email"
-                        disabled={disabled}
-                        value={signUpData.email}
-                        onChange={e => setSignUpData({ ...signUpData, email: e.target.value })}
-                        required
-                    />
-                    <TextField
-                        id="outlined-search"
-                        label="Fone"
+                        label="City"
                         type="text"
                         disabled={disabled}
-                        value={signUpData.foneNumber}
-                        onChange={e => setSignUpData({ ...signUpData, foneNumber: e.target.value })}
+                        value={newLocationData.city}
+                        onChange={e => setNewLocationData({ ...newLocationData, city: e.target.value })}
                         required
                     />
+
                     <TextField
-                        id="outlined-password-input"
-                        label="Password"
-                        type="password"
+                        id="outlined-search"
+                        label="Bedrooms available"
+                        type="number"
+                        maxLength={2}
                         disabled={disabled}
-                        autoComplete="current-password"
-                        value={signUpData.password}
-                        onChange={e => setSignUpData({ ...signUpData, password: e.target.value })}
+                        value={newLocationData.bedrooms}
+                        onChange={e => setNewLocationData({ ...newLocationData, bedrooms: e.target.value })}
                         required
                     />
+
                     <TextField
-                        id="outlined-password-input"
-                        label="Repeat password"
-                        type="password"
+                        id="outlined-search"
+                        label="Description"
+                        type="text"
                         disabled={disabled}
-                        autoComplete="current-password"
-                        value={signUpData.repeatPassword}
-                        onChange={e => setSignUpData({ ...signUpData, repeatPassword: e.target.value })}
+                        value={newLocationData.description}
+                        onChange={e => setNewLocationData({ ...newLocationData, description: e.target.value })}
                         required
                     />
+
                     <Stack direction="row" spacing={2} marginLeft={1} marginTop={2}>
                         <Button variant="contained" color="success" type='submit' disabled={disabled}>
                             SIGN UP
@@ -121,9 +123,14 @@ export default function NewLocationPage() {
                     </Stack>
                 </Box>
             </NewLocationPageContent>
+            <Footer></Footer>
         </>
     );
 }
 
 const NewLocationPageContent = styled.div`
+display: flex;
+justify-content: center;
+    margin-top: 120px;
+    margin-bottom: 80px;
 `;

@@ -1,11 +1,10 @@
 import * as React from 'react';
+import { useState, useContext } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import * as userApi from "../services/auth.js"
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import { useState, useContext } from 'react';
-import axios from 'axios';
+import * as userApi from "../services/auth.js"
 import { UserContext } from '../contexts/UserContext';
 export default function LoginTab() {
     const [disabled, setDisabled] = useState(false);

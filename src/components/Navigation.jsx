@@ -29,7 +29,7 @@ export default function Navigation() {
                 }}
             >
                 <BottomNavigationAction label="Home" icon={<HomeIcon />} onClick={() => navigateTo("/")} />
-                <BottomNavigationAction label="Rent" icon={<AddBoxIcon />} onClick={() => navigateTo("/new-location")} />
+                <BottomNavigationAction label="Be a host" icon={<AddBoxIcon />} onClick={() => navigateTo("/new-location")} />
                 <BottomNavigationAction label="My locations" icon={<LocationOnIcon />} onClick={() => navigateTo("/my-locations")} />
             </BottomNavigation>
         </BoxStyled>

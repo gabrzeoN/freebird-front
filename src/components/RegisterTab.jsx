@@ -51,8 +51,8 @@ export default function RegisterTab() {
             <CountrySelect
                 id="country-select"
                 disabled={disabled}
-                signUpData={signUpData}
-                setSignUpData={setSignUpData}
+                data={signUpData}
+                setData={setSignUpData}
             />
             <TextField
                 id="outlined-search"

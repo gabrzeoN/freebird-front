@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
-export default function CountrySelect({disabled, signUpData, setSignUpData}) {
+export default function CountrySelect({disabled, data, setData}) {
     return (
         <Autocomplete
             id="country-select-demo"
@@ -27,8 +27,8 @@ export default function CountrySelect({disabled, signUpData, setSignUpData}) {
                 <TextField
                     margin='normal'
                     type='text'
-                    value={signUpData.country}
-                    onSelect={e => setSignUpData({...signUpData, country: e.target.value})}
+                    value={data.country}
+                    onSelect={e => setData({...data, country: e.target.value})}
                     required
                     disabled={disabled}
                     {...params}
