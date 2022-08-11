@@ -24,10 +24,9 @@ export default function LoginTab() {
         setDisabled(true);
         try {
             const { data } = await userApi.signIn(signInData);
-            // const { data } = await axios.post("http://localhost:5000/sign-in", signInData);
             localStorage.setItem("freebirdwebsite_user", JSON.stringify(data));
             setUser(data);
-            console.log(data)
+            console.log(data);
             window.location.reload();
         } catch (error) {
             console.log(error.response.data);
