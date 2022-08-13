@@ -23,6 +23,7 @@ const HeaderContent = styled.header`
     box-shadow: -1px 11px 21px -1px rgba(0,0,0,0.75);
     /* -webkit-box-shadow: -1px 11px 21px -1px rgba(0,0,0,0.75); */
     /* -moz-box-shadow: -1px 11px 21px -1px rgba(0,0,0,0.75); */
+    background-color: white;
     height: 80px;
     display: flex;
     align-items: center;
@@ -31,6 +32,7 @@ const HeaderContent = styled.header`
     top: 0px;
     left: 0px;
     right: 0px;
+    z-index: 5;
 `;
 
 const Logo = styled.div`

@@ -1,29 +1,61 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl';
-import NativeSelect from '@mui/material/NativeSelect';
-import AuthBox from '../AuthBox';
-import Header from '../Header';
-import BasicTabs from '../AuthTabs';
+import { useState, useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
+
+import Header from '../Header';
 import Footer from '../Footer';
-import { useState, useContext } from 'react';
-// import axios from 'axios';
+import Location from '../Location';
 import { UserContext } from '../../contexts/UserContext';
+import * as locationApi from "../../services/locations.js";
+import { PageNavigationContext } from '../../contexts/PageNavigationContext';
 
 export default function HomePage() {
-const {user} = useContext(UserContext);
+    const { setPage } = useContext(PageNavigationContext);
+    const { user } = useContext(UserContext);
+    const [locations, setLocations] = useState(null);
 
-    console.log(user)
+    async function loadAllLocations(){
+        try{
+            const { data } = await locationApi.getAll();
+            setLocations([...data]);
+        }catch (error) {
+            console.log(error.response.data);
+        }
+    }
+
+    useEffect(() => {
+        setPage(0);
+        loadAllLocations();
+    }, []);
+
     return (
-        <HomePageContent>
-            <Header></Header>  
-            <Footer></Footer>   
-        </HomePageContent>
+        <>
+            <Header></Header>
+            <HomePageContent>
+                {
+                    locations?.length === 0 || locations === null ?
+                        <p>There is no locations yet</p>
+                    :
+                    locations.map((location) => {
+                        return(
+                            <Link key={location.id} to={`location/${location.id}`}>
+                                <Location key={location.id} location={location}></Location>
+                            </Link>
+                        )
+                    })
+                }
+            </HomePageContent>
+            <Footer></Footer>
+        </>
     );
 }
 
 const HomePageContent = styled.div`
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 120px;
+    margin-bottom: 80px;
 `;
+

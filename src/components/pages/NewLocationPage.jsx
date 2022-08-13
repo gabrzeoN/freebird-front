@@ -9,10 +9,10 @@ import Stack from '@mui/material/Stack';
 
 import Header from '../Header';
 import Footer from '../Footer';
-import { supabase, supabaseUrl } from '../../services/supabaseClient.js'
+import { supabase, supabaseUrl } from '../../services/supabaseClient.js';
 import CountrySelect from "../CountrySelect";
 import { UserContext } from '../../contexts/UserContext';
-import * as locationApi from "../../services/locations.js"
+import * as locationApi from "../../services/locations.js";
 
 export default function NewLocationPage() {
     const { user } = useContext(UserContext);

@@ -13,12 +13,12 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import { PageNavigationContext } from '../contexts/PageNavigationContext';
 
 export default function Navigation() {
+    const { page: value, setPage: setValue } = useContext(PageNavigationContext);
     const navigate = useNavigate();
     function navigateTo(url) {
         navigate(url);
     }
-
-    const { page: value, setPage: setValue } = useContext(PageNavigationContext);
+    
     return (
         <BoxStyled sx={{ width: "100%", fontSize: "100px" }}>
             <BottomNavigation
@@ -29,7 +29,7 @@ export default function Navigation() {
                 }}
             >
                 <BottomNavigationAction label="Home" icon={<HomeIcon />} onClick={() => navigateTo("/")} />
-                <BottomNavigationAction label="Be a host" icon={<AddBoxIcon />} onClick={() => navigateTo("/new-location")} />
+                <BottomNavigationAction label="Host" icon={<AddBoxIcon />} onClick={() => navigateTo("/new-location")} />
                 <BottomNavigationAction label="My locations" icon={<LocationOnIcon />} onClick={() => navigateTo("/my-locations")} />
             </BottomNavigation>
         </BoxStyled>

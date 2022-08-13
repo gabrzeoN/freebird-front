@@ -1,5 +1,9 @@
 import api from './api';
 
+export async function getById(id) {
+    return await api.get(`/locations/${id}`);
+}
+
 export async function getAll() {
     return await api.get(`/locations`);
 }
@@ -10,7 +14,7 @@ export async function getAllFromUser(user) {
             Authorization: `Bearer ${user.token}`
         }
     }
-    return await api.get(`/locations`, config);
+    return await api.get(`/locations/user`, config);
 }
 
 export async function newLocation(data, user) {

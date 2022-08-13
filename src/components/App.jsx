@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { UserProvider } from "../contexts/UserContext";
 import { PageNavigationProvider } from "../contexts/PageNavigationContext";
 import HomePage from "./pages/HomePage";
+import LocationPage from "./pages/LocationPage";
 import NewLocationPage from "./pages/NewLocationPage"
 import PrivateRoute from "./PrivateRoute";
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<HomePage />} />
+                        <Route path="/location/:id" element={<LocationPage />} />
                         <Route path="/new-location" element={<PrivateRoute><NewLocationPage /></PrivateRoute>} />
                         {/* <Route path="/" element={<SignInPage/>} /> */}
                         {/* <Route path="/sign-up" element={<SignUp/>} /> */}
