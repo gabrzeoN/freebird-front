@@ -65,7 +65,7 @@ export default function LoginTab() {
                 required
             />
             <Stack direction="row" spacing={2} marginLeft={1} marginTop={2}>
-                <Button variant="contained" color="success" type='submit' disabled={disabled}>
+                <Button variant="contained" sx={{width: 250}} type='submit' disabled={disabled}>
                     SIGN IN
                 </Button>
             </Stack>

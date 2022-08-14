@@ -14,7 +14,7 @@ export async function getAllFromUser(user) {
             Authorization: `Bearer ${user.token}`
         }
     }
-    return await api.get(`/locations/user`, config);
+    return await api.get(`/locations/user/my-locations`, config);
 }
 
 export async function newLocation(data, user) {

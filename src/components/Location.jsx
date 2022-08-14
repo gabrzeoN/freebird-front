@@ -37,5 +37,8 @@ const LocationContent = styled.div`
     @media (max-width: 1200px){
         height: 300px;
         width: 250px;
+        img{
+            height: 70%;
+        }
     }
 `;

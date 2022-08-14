@@ -2,8 +2,6 @@ import ReactDOM from 'react-dom/client';
 import React from 'react';
 
 import App from './components/App';
-import "./assets/css/reset.css";
-import "./assets/css/style.css";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -137,7 +137,7 @@ export default function NewLocationPage() {
                         onChange={e => setNewLocationData({ ...newLocationData, description: e.target.value })}
                         required
                     />
-                    <Button variant="contained" component="label">
+                    <Button variant="contained" component="label" sx={{width: 250, marginLeft: "10px"}}>
                         Upload image
                         <input
                             hidden
@@ -149,8 +149,8 @@ export default function NewLocationPage() {
                         />
                     </Button>
                     <Stack direction="row" spacing={2} marginLeft={1} marginTop={2}>
-                        <Button variant="contained" color="success" type='submit' disabled={disabled}>
-                            SIGN UP
+                        <Button variant="contained" type='submit' disabled={disabled} sx={{width: 250}}>
+                            Be a host
                         </Button>
                     </Stack>
                 </Box>

@@ -102,7 +102,7 @@ export default function RegisterTab() {
                 required
             />
             <Stack direction="row" spacing={2} marginLeft={1} marginTop={2}>
-                <Button variant="contained" color="success" type='submit' disabled={disabled}>
+                <Button variant="contained" type='submit' disabled={disabled} sx={{width: 250}}>
                     SIGN UP
                 </Button>
             </Stack>

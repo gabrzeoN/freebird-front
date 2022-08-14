@@ -9,14 +9,14 @@ import { UserContext } from '../../contexts/UserContext';
 import * as locationApi from "../../services/locations.js";
 import { PageNavigationContext } from '../../contexts/PageNavigationContext';
 
-export default function HomePage() {
+export default function MyLocationsPage() {
     const { setPage } = useContext(PageNavigationContext);
     const { user } = useContext(UserContext);
     const [locations, setLocations] = useState(null);
 
-    async function loadAllLocations(){
+    async function loadMyLocations(){
         try{
-            const { data } = await locationApi.getAll();
+            const { data } = await locationApi.getAllFromUser(user);
             setLocations([...data]);
         }catch (error) {
             console.log(error.response.data);
@@ -24,14 +24,14 @@ export default function HomePage() {
     }
 
     useEffect(() => {
-        setPage(0);
-        loadAllLocations();
+        setPage(2);
+        loadMyLocations();
     }, []);
 
     return (
         <>
             <Header></Header>
-            <HomePageContent>
+            <MyLocationsContent>
                 {
                     locations?.length === 0 || locations === null ?
                         <p>There is no locations yet</p>
@@ -44,13 +44,13 @@ export default function HomePage() {
                         )
                     })
                 }
-            </HomePageContent>
+            </MyLocationsContent>
             <Footer></Footer>
         </>
     );
 }
 
-const HomePageContent = styled.div`
+const MyLocationsContent = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,15 +1,16 @@
-import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// import "./../assets/css/reset.css";
-// import "../assets/css/style.css";
+import "./../assets/css/reset.css";
+import "../assets/css/style.css";
 
 import { UserProvider } from "../contexts/UserContext";
 import { PageNavigationProvider } from "../contexts/PageNavigationContext";
 import HomePage from "./pages/HomePage";
 import LocationPage from "./pages/LocationPage";
-import NewLocationPage from "./pages/NewLocationPage"
+import NewLocationPage from "./pages/NewLocationPage";
+import MyLocationsPage from "./pages/MyLocationsPage";
 import PrivateRoute from "./PrivateRoute";
+
 export default function App() {
 
     return (
@@ -20,10 +21,7 @@ export default function App() {
                         <Route path="/" element={<HomePage />} />
                         <Route path="/location/:id" element={<LocationPage />} />
                         <Route path="/new-location" element={<PrivateRoute><NewLocationPage /></PrivateRoute>} />
-                        {/* <Route path="/" element={<SignInPage/>} /> */}
-                        {/* <Route path="/sign-up" element={<SignUp/>} /> */}
-                        {/* <Route path='/hashtag/:hashtag' element={<TagPage />} /> */}
-                        {/* <Route path="/user/:userId" element={<UserPage/>} /> */}
+                        <Route path="/my-locations" element={<PrivateRoute><MyLocationsPage /></PrivateRoute>} />
                     </Routes>
                 </BrowserRouter>
             </PageNavigationProvider>
