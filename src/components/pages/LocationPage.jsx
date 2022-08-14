@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from "styled-components";
+import Button from '@mui/material/Button';
 
 import Header from '../Header';
 import Footer from '../Footer';
@@ -25,6 +26,10 @@ export default function LocationPage() {
         }
     }
 
+    function handleRent(){
+        alert("This functionality is coming soon!");
+    }
+
     useEffect(() => {
         setPage(99);
         loadOneLocation();
@@ -47,6 +52,13 @@ export default function LocationPage() {
                                     <h2>{`U$D ${location.pricePerNight} / night`}</h2>
                                 </div>
                                 <p>{location.description}</p>
+                                <Button
+                                    variant="contained"
+                                    sx={{marginTop: "40px", width: "50%", height: "50px"}}
+                                    onClick={() => handleRent()}
+                                >
+                                    Rent
+                                </Button>
                             </>
                     }
                 </Box>
@@ -72,6 +84,7 @@ const LocationPageContent = styled.div`
 const Box = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
     flex-wrap: wrap;
     background-color: white;
     box-shadow: 10px 10px 129px -42px rgba(0,0,0,0.75);
@@ -96,6 +109,7 @@ const Box = styled.div`
         margin: 25px 0px;
         font-size: 24px;
         font-weight: bold;
+        width: 100%;
     }
 
     p{
@@ -109,7 +123,6 @@ const Box = styled.div`
         padding: 20px;
         img{
             border-radius: 20px;
-            /* height: 300px; */
             max-width: 400px;
         }
         div{

@@ -9,15 +9,10 @@ import { UserContext } from '../contexts/UserContext';
 export default function LoginTab() {
     const [disabled, setDisabled] = useState(false);
     const {setUser} = useContext(UserContext);
-    // const [signInData, setSignInData] = useState({
-    //     email: "",
-    //     password: "",
-    // }); 
-    // TODO: change me
     const [signInData, setSignInData] = useState({
-        email: "admin@gmail.com",
-        password: "adminadmin",
-    });
+        email: "",
+        password: "",
+    }); 
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -29,6 +24,7 @@ export default function LoginTab() {
             console.log(data);
             window.location.reload();
         } catch (error) {
+            alert(error.response.data);
             console.log(error.response.data);
             setDisabled(false);
         }

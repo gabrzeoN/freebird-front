@@ -31,21 +31,12 @@ export default function NewLocationPage() {
         isAvailable: true
     });
 
-    // TODO: change me
-    // const [newLocationData, setNewLocationData] = useState({
-    //     pricePerNight: 50000,
-    //     bedrooms: 0,
-    //     description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo at quia aliquam quos, libero mollitia sunt reprehenderit porro, nostrum possimus eum, tempora vel optio inventore! Voluptatum rerum minus blanditiis in.",
-    //     country: "Brazil",
-    //     state: "Parana",
-    //     city: "Maringa",
-    //     picture: "",
-    //     isAvailable: true
-    // });
-
     async function handleSubmit(e) {
         e.preventDefault();
-        if (!imageUpload) throw new Error('You must select an image to upload.');
+        if (!imageUpload) {
+            alert('Please, fill all fields correctly and select an image to upload.');
+            throw new Error('You must select an image to upload.');
+        }
         setDisabled(true);
         try {
             const file = imageUpload;
@@ -57,9 +48,15 @@ export default function NewLocationPage() {
                 throw uploadError;
             }
             const imageUrl = `${supabaseUrl}/storage/v1/object/public/${uploadData.Key}`
-            const { data } = await locationApi.newLocation({ ...newLocationData, picture: imageUrl }, user);
+            const { data } = await locationApi.newLocation({
+                ...newLocationData,
+                picture: imageUrl,
+                pricePerNight: parseInt(newLocationData.pricePerNight),
+                bedrooms: parseInt(newLocationData.bedrooms),
+            }, user);
             navigate("/");
         } catch (error) {
+            alert('Please, fill all fields correctly and select an image to upload.');
             console.log(error.response.data);
             setDisabled(false);
         }

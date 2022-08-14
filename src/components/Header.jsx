@@ -19,10 +19,9 @@ export default function Header() {
 }
 
 const HeaderContent = styled.header`
-    /* background-color: var(--header-background); */
     box-shadow: -1px 11px 21px -1px rgba(0,0,0,0.75);
-    /* -webkit-box-shadow: -1px 11px 21px -1px rgba(0,0,0,0.75); */
-    /* -moz-box-shadow: -1px 11px 21px -1px rgba(0,0,0,0.75); */
+    -webkit-box-shadow: -1px 11px 21px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 11px 21px -1px rgba(0,0,0,0.75);
     background-color: white;
     height: 80px;
     display: flex;
@@ -42,6 +41,7 @@ const Logo = styled.div`
     font-family: var(--logo-font);
     font-size: 50px;
     color: #0c8d98;
+    color: #1565C0;
 `;
 
 const PageNavigation = styled.div`

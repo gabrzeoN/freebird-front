@@ -8,30 +8,33 @@ import { useState } from 'react';
 import axios from 'axios';
 export default function RegisterTab() {
     const [disabled, setDisabled] = useState(false);
-    // const [signUpData, setSignUpData] = useState({
-    //     country: "",
-    //     fullName: "",
-    //     email: "",
-    //     foneNumber: "",
-    //     password: "",
-    //     repeatPassword: "",
-    // });
-    // TODO: change me
     const [signUpData, setSignUpData] = useState({
         country: "",
-        fullName: "aa",
-        email: "a@ab.com",
-        foneNumber: "11223344556",
-        password: "1122334455",
-        repeatPassword: "1122334455",
+        fullName: "",
+        email: "",
+        foneNumber: "",
+        password: "",
+        repeatPassword: "",
     });
+    // TODO: erase
+    // const [signUpData, setSignUpData] = useState({
+    //     country: "",
+    //     fullName: "aa",
+    //     email: "a@ab.com",
+    //     foneNumber: "11223344556",
+    //     password: "1122334455",
+    //     repeatPassword: "1122334455",
+    // });
+
     async function handleSubmit(e) {
         e.preventDefault();
         setDisabled(true);
+        console.log(signUpData.country)
         try {
             await axios.post("http://localhost:5000/sign-up", signUpData);
             window.location.reload();
         } catch (error) {
+            alert(error.response.data);
             console.log(error.response.data);
             setDisabled(false);
         }
