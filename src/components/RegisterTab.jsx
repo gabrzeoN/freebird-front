@@ -5,7 +5,8 @@ import CountrySelect from "./CountrySelect";
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { useState } from 'react';
-import axios from 'axios';
+import * as userApi from "../services/auth.js";
+
 export default function RegisterTab() {
     const [disabled, setDisabled] = useState(false);
     const [signUpData, setSignUpData] = useState({
@@ -16,22 +17,13 @@ export default function RegisterTab() {
         password: "",
         repeatPassword: "",
     });
-    // TODO: erase
-    // const [signUpData, setSignUpData] = useState({
-    //     country: "",
-    //     fullName: "aa",
-    //     email: "a@ab.com",
-    //     foneNumber: "11223344556",
-    //     password: "1122334455",
-    //     repeatPassword: "1122334455",
-    // });
 
     async function handleSubmit(e) {
         e.preventDefault();
         setDisabled(true);
         console.log(signUpData.country)
         try {
-            await axios.post("http://localhost:5000/sign-up", signUpData);
+            const { data } = await userApi.signUp(signUpData);
             window.location.reload();
         } catch (error) {
             alert(error.response.data);
